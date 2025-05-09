@@ -1,69 +1,378 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Война Алой и Белой розы</title>
-  <link href="styles.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Война Алой и Белой розы</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#8B0000',secondary:'#DAA520'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            background-color: #F5F5DC;
+            background-image: url("https://readdy.ai/api/search-image?query=old%20parchment%20paper%20texture%2C%20beige%20color%2C%20subtle%20texture%2C%20no%20text%2C%20high%20quality%2C%20historical%20document%20background%2C%20clean%2C%20minimalist&width=1920&height=1080&seq=1&orientation=landscape");
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+        }
+        .divider {
+            height: 30px;
+            background-image: url("https://readdy.ai/api/search-image?query=medieval%20decorative%20divider%2C%20ornamental%20separator%2C%20burgundy%20and%20gold%20colors%2C%20simple%20elegant%20design%2C%20transparent%20background&width=800&height=100&seq=2&orientation=landscape");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            margin: 2rem 0;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #8B0000;
+            border: 3px solid #DAA520;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background-color: #DAA520;
+        }
+        input[type="checkbox"] {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+            #menu-toggle:checked ~ .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Справочник: Война Алой и Белой розы</h1>
-    <nav>
-      <a href="#intro">О войне</a>
-      <a href="#timeline">Хронология</a>
-      <a href="#figures">Личности</a>
-      <a href="#battles">Битвы</a>
-      <a href="#symbols">Символика</a>
-      <a href="#consequences">Последствия</a>
-    </nav>
-  </header>
+<body class="text-gray-800">
+    <header class="fixed top-0 left-0 right-0 bg-[#F5F5DC] bg-opacity-95 shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+            <div class="flex items-center">
+                <h1 class="text-primary text-2xl md:text-3xl font-bold">Война Алой и Белой розы</h1>
+            </div>
+            
+            <label for="menu-toggle" class="block md:hidden cursor-pointer">
+                <div class="w-8 h-8 flex items-center justify-center">
+                    <i class="ri-menu-line text-primary ri-2x"></i>
+                </div>
+            </label>
+            <input type="checkbox" id="menu-toggle">
+            
+            <nav class="mobile-menu md:block w-full md:w-auto mt-3 md:mt-0">
+                <ul class="flex flex-col md:flex-row md:space-x-8 space-y-3 md:space-y-0">
+                    <li><a href="#about" class="text-gray-800 hover:text-primary font-medium transition-colors duration-200">О войне</a></li>
+                    <li><a href="#timeline" class="text-gray-800 hover:text-primary font-medium transition-colors duration-200">Хронология</a></li>
+                    <li><a href="#people" class="text-gray-800 hover:text-primary font-medium transition-colors duration-200">Ключевые личности</a></li>
+                    <li><a href="#symbols" class="text-gray-800 hover:text-primary font-medium transition-colors duration-200">Символика</a></li>
+                    <li><a href="#consequences" class="text-gray-800 hover:text-primary font-medium transition-colors duration-200">Последствия</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <main>
-    <section id="intro">
-      <h2>О войне</h2>
-      <p>Война Алой и Белой розы (1455–1487) — серия гражданских войн в Англии между династиями Ланкастеров и Йорков за контроль над английским престолом.</p>
-    </section>
+    <main class="container mx-auto px-4 pt-24 pb-12">
+        <section id="hero" class="mb-16 mt-8">
+            <div class="bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                        <h2 class="text-4xl md:text-5xl font-bold text-primary mb-6">Война Алой и Белой розы</h2>
+                        <p class="text-xl mb-4">Историческое противостояние двух ветвей династии Плантагенетов — Ланкастеров и Йорков — за английский престол в 1455-1485 годах.</p>
+                        <p class="text-lg">Этот период английской истории стал поворотным моментом в развитии государства и оказал значительное влияние на формирование современной политической системы Англии.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://readdy.ai/api/search-image?query=medieval%20battle%20scene%20with%20red%20and%20white%20rose%20banners%2C%20knights%20in%20armor%2C%20historical%20illustration%2C%20dramatic%20lighting%2C%20realistic%20style%2C%20English%20civil%20war%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=600&height=400&seq=3&orientation=landscape" alt="Битва Алой и Белой розы" class="rounded-lg shadow-lg w-full h-auto object-cover object-top">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="timeline">
-      <h2>Хронология</h2>
-      <ul>
-        <li><strong>1455:</strong> Битва при Сент-Олбансе — начало конфликта</li>
-        <li><strong>1461:</strong> Битва при Таутоне — Эдуард IV становится королём</li>
-        <li><strong>1471:</strong> Битвы при Барнете и Тьюксбери — поражение Ланкастеров</li>
-        <li><strong>1485:</strong> Битва при Босворте — Генрих VII основывает династию Тюдоров</li>
-      </ul>
-    </section>
+        <section id="about" class="mb-16">
+            <div class="bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
+                <h2 class="text-3xl font-bold text-primary mb-6">О войне</h2>
+                <p class="text-lg mb-4">Война Алой и Белой розы — серия династических гражданских войн за контроль над английским троном между сторонниками двух конкурирующих ветвей королевской династии Плантагенетов: Ланкастеров (символ — алая роза) и Йорков (символ — белая роза).</p>
+                <p class="text-lg mb-4">Конфликт начался после поражения Англии в Столетней войне и был вызван слабостью правления короля Генриха VI из дома Ланкастеров, что привело к борьбе за власть между знатными семьями королевства.</p>
+                <p class="text-lg mb-4">Несмотря на название, данное этому периоду английской истории позднее, символы роз использовались нерегулярно, а большинство участников конфликта переходили от одной стороны к другой в зависимости от собственных интересов.</p>
+                <p class="text-lg">Актуальность изучения данного периода обусловлена его значительным влиянием на дальнейшее развитие английской монархии, становление новой династии Тюдоров и формирование централизованного государства.</p>
+            </div>
+        </section>
 
-    <section id="figures">
-      <h2>Ключевые личности</h2>
-      <ul>
-        <li><strong>Генрих VI:</strong> слабый король из дома Ланкастеров</li>
-        <li><strong>Эдуард IV:</strong> первый король из дома Йорков</li>
-        <li><strong>Маргарита Анжуйская:</strong> энергичная королева и военный лидер</li>
-        <li><strong>Ричард III:</strong> последний король из династии Йорков</li>
-      </ul>
-    </section>
+        <div class="divider"></div>
 
-    <section id="battles">
-      <h2>Знаменитые битвы</h2>
-      <p>Наиболее важными битвами стали Сент-Олбанс, Таутон, Барнет, Тьюксбери и Босворт. Каждая из них кардинально меняла ход войны.</p>
-    </section>
+        <section id="timeline" class="mb-16">
+            <div class="bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
+                <h2 class="text-3xl font-bold text-primary mb-8">Хронология событий</h2>
+                
+                <div class="relative timeline pl-12">
+                    <div class="timeline-item relative mb-10">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">22 мая 1455 г. — Первая битва при Сент-Олбансе</h3>
+                        <p class="text-lg mb-4">Первое крупное сражение войны. Йоркисты под предводительством Ричарда, герцога Йоркского, одержали победу над королевскими войсками. Король Генрих VI был ранен и взят в плен. Ричард Йоркский стал лордом-протектором королевства.</p>
+                        <img src="https://readdy.ai/api/search-image?query=medieval%20battle%20at%20St%20Albans%2C%20knights%20with%20banners%2C%20historical%20illustration%2C%20English%20civil%20war%2C%20detailed%20historical%20accuracy%2C%20no%20text&width=600&height=300&seq=4&orientation=landscape" alt="Битва при Сент-Олбансе" class="rounded-lg shadow-md w-full h-auto object-cover object-top mt-2">
+                    </div>
+                    
+                    <div class="timeline-item relative mb-10">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">29 марта 1461 г. — Битва при Таутоне</h3>
+                        <p class="text-lg mb-4">Самая кровопролитная битва войны и одно из крупнейших сражений на английской земле. Йоркисты под командованием Эдуарда IV разгромили ланкастерские войска. По разным оценкам, погибло от 20 до 30 тысяч человек. После этой победы Эдуард IV был коронован королем Англии.</p>
+                        <img src="https://readdy.ai/api/search-image?query=Battle%20of%20Towton%2C%20massive%20medieval%20battle%20in%20snow%2C%20thousands%20of%20soldiers%2C%20bloody%20conflict%2C%20historical%20illustration%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=600&height=300&seq=5&orientation=landscape" alt="Битва при Таутоне" class="rounded-lg shadow-md w-full h-auto object-cover object-top mt-2">
+                    </div>
+                    
+                    <div class="timeline-item relative mb-10">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">14 апреля 1471 г. — Битва при Барнете</h3>
+                        <p class="text-lg mb-4">Сражение, в котором Эдуард IV победил войска графа Уорика, известного как «Делатель королей». Уорик погиб в бою, что стало серьезным ударом для ланкастерской партии.</p>
+                        <img src="https://readdy.ai/api/search-image?query=Battle%20of%20Barnet%2C%20medieval%20knights%20in%20fog%2C%20Earl%20of%20Warwick%20death%2C%20historical%20illustration%2C%20English%20civil%20war%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=600&height=300&seq=6&orientation=landscape" alt="Битва при Барнете" class="rounded-lg shadow-md w-full h-auto object-cover object-top mt-2">
+                    </div>
+                    
+                    <div class="timeline-item relative mb-10">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">4 мая 1471 г. — Битва при Тьюксбери</h3>
+                        <p class="text-lg mb-4">Решающее сражение, в котором Эдуард IV разбил последнюю крупную ланкастерскую армию. В битве погиб наследник Ланкастеров — принц Эдуард, сын Генриха VI. Вскоре после этого был убит и сам Генрих VI, что практически положило конец притязаниям Ланкастеров на трон.</p>
+                        <img src="https://readdy.ai/api/search-image?query=Battle%20of%20Tewkesbury%2C%20medieval%20battle%20scene%2C%20death%20of%20Prince%20Edward%2C%20Lancastrian%20defeat%2C%20historical%20illustration%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=600&height=300&seq=7&orientation=landscape" alt="Битва при Тьюксбери" class="rounded-lg shadow-md w-full h-auto object-cover object-top mt-2">
+                    </div>
+                    
+                    <div class="timeline-item relative">
+                        <h3 class="text-2xl font-bold text-secondary mb-2">22 августа 1485 г. — Битва при Босворте</h3>
+                        <p class="text-lg mb-4">Финальное сражение войны. Генрих Тюдор, имевший отдаленные права на престол через Ланкастерскую линию, победил и убил короля Ричарда III из дома Йорков. Генрих был коронован как Генрих VII, основав новую династию Тюдоров и положив конец войне Роз.</p>
+                        <img src="https://readdy.ai/api/search-image?query=Battle%20of%20Bosworth%20Field%2C%20death%20of%20Richard%20III%2C%20Henry%20Tudor%20victory%2C%20medieval%20battle%2C%20crowning%20moment%2C%20historical%20illustration%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=600&height=300&seq=8&orientation=landscape" alt="Битва при Босворте" class="rounded-lg shadow-md w-full h-auto object-cover object-top mt-2">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="symbols">
-      <h2>Символика</h2>
-      <p>Алая роза символизировала дом Ланкастеров, белая — дом Йорков. После войны Генрих VII объединил символы в розу Тюдоров.</p>
-    </section>
+        <div class="divider"></div>
 
-    <section id="consequences">
-      <h2>Последствия</h2>
-      <p>Война ослабила аристократию, усилила центральную власть и привела к созданию династии Тюдоров, начав эпоху Раннего Нового времени.</p>
-    </section>
-  </main>
+        <section id="people" class="mb-16">
+            <div class="bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
+                <h2 class="text-3xl font-bold text-primary mb-8">Ключевые личности</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="flex flex-col sm:flex-row items-center">
+                            <div class="sm:w-1/3 mb-4 sm:mb-0 sm:mr-6">
+                                <img src="https://readdy.ai/api/search-image?query=King%20Henry%20VI%20of%20England%2C%20medieval%20royal%20portrait%2C%20historical%20accurate%2C%20wearing%20crown%2C%20solemn%20expression%2C%20pale%20complexion%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=300&height=400&seq=9&orientation=portrait" alt="Генрих VI" class="rounded-lg shadow-sm w-full h-auto object-cover object-top">
+                            </div>
+                            <div class="sm:w-2/3">
+                                <h3 class="text-2xl font-bold text-primary mb-2">Генрих VI</h3>
+                                <p class="text-lg mb-2"><strong>1421-1471</strong></p>
+                                <p class="text-lg">Король Англии из династии Ланкастеров. Унаследовал трон в младенчестве. Страдал от периодических приступов безумия. Его слабое правление и неспособность контролировать амбициозных дворян стали одной из главных причин начала войны. Был свергнут, восстановлен на престоле и в итоге убит в Тауэре.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="flex flex-col sm:flex-row items-center">
+                            <div class="sm:w-1/3 mb-4 sm:mb-0 sm:mr-6">
+                                <img src="https://readdy.ai/api/search-image?query=King%20Edward%20IV%20of%20England%2C%20medieval%20royal%20portrait%2C%20tall%20strong%20figure%2C%20golden%20crown%2C%20regal%20pose%2C%20historical%20accurate%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=300&height=400&seq=10&orientation=portrait" alt="Эдуард IV" class="rounded-lg shadow-sm w-full h-auto object-cover object-top">
+                            </div>
+                            <div class="sm:w-2/3">
+                                <h3 class="text-2xl font-bold text-primary mb-2">Эдуард IV</h3>
+                                <p class="text-lg mb-2"><strong>1442-1483</strong></p>
+                                <p class="text-lg">Первый король Англии из династии Йорков. Талантливый полководец, одержавший ряд важных побед. Его брак с Елизаветой Вудвилл, женщиной незнатного происхождения, вызвал недовольство среди его сторонников. Правил с перерывом (был временно свергнут в 1470-1471 гг.). Считается одним из самых успешных королей позднего средневековья.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="flex flex-col sm:flex-row items-center">
+                            <div class="sm:w-1/3 mb-4 sm:mb-0 sm:mr-6">
+                                <img src="https://readdy.ai/api/search-image?query=Margaret%20of%20Anjou%2C%20medieval%20queen%20portrait%2C%20strong%20determined%20expression%2C%20royal%20attire%2C%20historical%20accurate%20costume%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=300&height=400&seq=11&orientation=portrait" alt="Маргарита Анжуйская" class="rounded-lg shadow-sm w-full h-auto object-cover object-top">
+                            </div>
+                            <div class="sm:w-2/3">
+                                <h3 class="text-2xl font-bold text-primary mb-2">Маргарита Анжуйская</h3>
+                                <p class="text-lg mb-2"><strong>1430-1482</strong></p>
+                                <p class="text-lg">Жена Генриха VI, королева-консорт Англии. Во время болезни мужа фактически управляла страной. Энергичная и решительная, она возглавила ланкастерскую партию и лично руководила войсками в нескольких сражениях. После смерти мужа и сына была выкуплена из английского плена французским королем и провела остаток жизни во Франции.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="flex flex-col sm:flex-row items-center">
+                            <div class="sm:w-1/3 mb-4 sm:mb-0 sm:mr-6">
+                                <img src="https://readdy.ai/api/search-image?query=King%20Richard%20III%20of%20England%2C%20medieval%20royal%20portrait%2C%20slight%20hunchback%2C%20intense%20gaze%2C%20historical%20accurate%2C%20wearing%20crown%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=300&height=400&seq=12&orientation=portrait" alt="Ричард III" class="rounded-lg shadow-sm w-full h-auto object-cover object-top">
+                            </div>
+                            <div class="sm:w-2/3">
+                                <h3 class="text-2xl font-bold text-primary mb-2">Ричард III</h3>
+                                <p class="text-lg mb-2"><strong>1452-1485</strong></p>
+                                <p class="text-lg">Последний король Англии из династии Йорков и последний король из династии Плантагенетов. Брат Эдуарда IV. Захватил трон после смерти брата, отстранив от власти своих племянников (принцев в Тауэре). Его короткое правление закончилось поражением и гибелью в битве при Босворте. Образ Ричарда III был сильно очернен тюдоровской пропагандой и произведениями Шекспира.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>Проект ученицы 10 класса Караваевой Дарьи, 2025</p>
-  </footer>
+        <div class="divider"></div>
+
+        <section id="symbols" class="mb-16">
+            <div class="bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
+                <h2 class="text-3xl font-bold text-primary mb-8">Символика</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="mb-4">
+                                <img src="https://readdy.ai/api/search-image?query=Red%20rose%20of%20Lancaster%2C%20medieval%20heraldic%20symbol%2C%20single%20red%20rose%2C%20detailed%20petals%2C%20historical%20accurate%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=300&height=300&seq=13&orientation=squarish" alt="Алая роза Ланкастеров" class="rounded-lg shadow-sm w-full h-auto object-cover object-top">
+                            </div>
+                            <h3 class="text-2xl font-bold text-primary mb-2">Алая роза Ланкастеров</h3>
+                            <p class="text-lg">Символ дома Ланкастеров. Красная роза стала эмблемой этой ветви Плантагенетов в начале XV века. Цвет символизировал кровь, мужество и силу. Алая роза использовалась на знаменах, щитах и других атрибутах сторонников Ланкастеров.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="mb-4">
+                                <img src="https://readdy.ai/api/search-image?query=White%20rose%20of%20York%2C%20medieval%20heraldic%20symbol%2C%20single%20white%20rose%2C%20detailed%20petals%2C%20historical%20accurate%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=300&height=300&seq=14&orientation=squarish" alt="Белая роза Йорков" class="rounded-lg shadow-sm w-full h-auto object-cover object-top">
+                            </div>
+                            <h3 class="text-2xl font-bold text-primary mb-2">Белая роза Йорков</h3>
+                            <p class="text-lg">Эмблема дома Йорков. Белая роза символизировала чистоту, невинность и право на престол. Этот символ использовался Ричардом, герцогом Йоркским, и его сыновьями Эдуардом IV и Ричардом III для обозначения своих притязаний на английский трон.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="mb-4">
+                                <img src="https://readdy.ai/api/search-image?query=Tudor%20rose%2C%20combined%20red%20and%20white%20rose%2C%20medieval%20heraldic%20symbol%2C%20detailed%20petals%2C%20historical%20accurate%2C%20no%20text%2C%20detailed%20historical%20accuracy&width=300&height=300&seq=15&orientation=squarish" alt="Роза Тюдоров" class="rounded-lg shadow-sm w-full h-auto object-cover object-top">
+                            </div>
+                            <h3 class="text-2xl font-bold text-primary mb-2">Роза Тюдоров</h3>
+                            <p class="text-lg">Символ примирения и объединения враждующих домов. После победы Генриха VII, женившегося на Елизавете Йоркской, дочери Эдуарда IV, был создан новый символ — двухцветная роза, сочетающая красный и белый цвета. Этот символ стал эмблемой новой династии Тюдоров и олицетворял окончание гражданской войны.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <p class="text-lg">Символика роз, хотя и не использовалась широко во время самого конфликта, стала важным элементом исторической памяти и культурного наследия. Название «Война Алой и Белой розы» было популяризировано позднее, в том числе благодаря произведениям Уильяма Шекспира, и стало общепринятым обозначением этого периода английской истории.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section id="consequences" class="mb-16">
+            <div class="bg-white bg-opacity-80 rounded-lg p-8 shadow-lg">
+                <h2 class="text-3xl font-bold text-primary mb-6">Последствия</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="w-12 h-12 flex items-center justify-center bg-primary rounded-full mb-4">
+                            <i class="ri-government-line text-white ri-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Политические</h3>
+                        <ul class="list-disc pl-5 text-lg space-y-2">
+                            <li>Установление новой династии Тюдоров</li>
+                            <li>Значительное ослабление влияния феодальной знати</li>
+                            <li>Усиление королевской власти и централизация государства</li>
+                            <li>Создание более эффективной системы управления</li>
+                            <li>Формирование предпосылок для абсолютной монархии</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="w-12 h-12 flex items-center justify-center bg-primary rounded-full mb-4">
+                            <i class="ri-group-line text-white ri-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Социальные</h3>
+                        <ul class="list-disc pl-5 text-lg space-y-2">
+                            <li>Сокращение численности старой аристократии</li>
+                            <li>Возвышение новых дворянских родов, лояльных Тюдорам</li>
+                            <li>Развитие городов и торговли в период стабильности</li>
+                            <li>Формирование национального самосознания</li>
+                            <li>Изменение системы землевладения</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-lg p-6 shadow-md border border-gray-200">
+                        <div class="w-12 h-12 flex items-center justify-center bg-primary rounded-full mb-4">
+                            <i class="ri-book-open-line text-white ri-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-secondary mb-3">Культурные</h3>
+                        <ul class="list-disc pl-5 text-lg space-y-2">
+                            <li>Отражение событий войны в литературе и искусстве</li>
+                            <li>Создание цикла исторических хроник Шекспира</li>
+                            <li>Формирование новой геральдической символики</li>
+                            <li>Развитие историографии и летописания</li>
+                            <li>Влияние на английскую национальную идентичность</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p class="text-lg mb-4">Война Алой и Белой розы стала переломным моментом в истории Англии, ознаменовав переход от средневековья к раннему Новому времени. Истощение ресурсов феодальной знати и гибель многих аристократических родов создали условия для усиления королевской власти.</p>
+                
+                <p class="text-lg mb-4">Генрих VII, основатель династии Тюдоров, сумел установить прочный мир и провести ряд важных реформ, заложивших основу для будущего процветания Англии. При его преемниках, особенно при Генрихе VIII и Елизавете I, страна превратилась в одну из ведущих европейских держав.</p>
+                
+                <p class="text-lg">Таким образом, несмотря на разрушительный характер конфликта, его долгосрочные последствия способствовали модернизации английского государства и общества, что в конечном итоге привело к формированию современной Великобритании.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#E5E5D5] border-t border-gray-300 py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-700">© 2025 Исторический проект «Война Алой и Белой розы»</p>
+            <p class="text-gray-600 mt-2">Последнее обновление: 9 мая 2025 г.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Плавная прокрутка при клике на ссылки навигации
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Закрыть мобильное меню при клике на ссылку
+                    document.getElementById('menu-toggle').checked = false;
+                });
+            });
+            
+            // Подсветка активного раздела при прокрутке
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                const scrollPosition = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        current = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary', 'font-semibold');
+                    if (link.getAttribute('href') === current) {
+                        link.classList.add('text-primary', 'font-semibold');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
