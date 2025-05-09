@@ -1,0 +1,49 @@
+body {
+  font-family: Georgia, serif;
+  margin: 0;
+  padding: 0;
+  background: #fdfaf7;
+  color: #222;
+  line-height: 1.6;
+}
+
+header {
+  background: #7c0a02;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 0.5em;
+}
+
+nav a {
+  margin: 0 10px;
+  color: #ffe;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 2em;
+  max-width: 800px;
+  margin: auto;
+}
+
+section {
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ccc;
+}
+
+footer {
+  text-align: center;
+  padding: 1em;
+  background: #eee;
+  font-size: 0.9em;
+}
