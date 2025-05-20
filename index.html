@@ -1,0 +1,34 @@
+<p>
+  <span class="tooltip">Генрих VI
+    <span class="tooltiptext">Король Англии из дома Ланкастеров. Правил с перерывами с 1422 по 1471 гг.</span>
+  </span>
+  был слабым монархом, что способствовало началу войны.
+</p>
+
+<style>
+.tooltip {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted #000;
+}
+.tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #222;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; 
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
